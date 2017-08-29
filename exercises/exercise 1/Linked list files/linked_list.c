@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include "linked_list.h"
 
+
+//Kommentar
 struct node* allocate(){
 	struct node* temp_node = malloc(sizeof(struct node));
 	if(temp_node == NULL){
