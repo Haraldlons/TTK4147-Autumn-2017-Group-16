@@ -1,0 +1,28 @@
+Ass A:
+PC kræsjet.
+
+Ass B:
+#ifndef LINKED_LIST_H
+#define LINKED_LIST_H
+Hva gjør dette igjen?
+------------------------------
+struct node {
+	struct node *next;
+	struct node *prev;
+	int data;
+};
+
+Strukts laget i c igjen?
+
+======================
+/* Abstract data type for lists */
+typedef struct list *list_t;
+Lager man her en ny variabel-type?
+
+=
+
+list_t list = malloc(sizeof(list_t));
+Hvordan vet man størrelsen av list_t nå?
+
+Er det sånn at man vet hvilke datafelt list_t inneholder så da vet man hvor mye plass man må malloc'e?
+=

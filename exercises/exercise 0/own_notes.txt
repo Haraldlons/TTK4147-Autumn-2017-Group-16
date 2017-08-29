@@ -1,0 +1,123 @@
+Øving 0
+
+cli = command line interface
+
+echo $SHELL
+
+$ betyr environmental variables
+$PATH - Where the shell searches for commands
+$HOME - HOME DIRECTORY
+
+env og export commands til å se og endre "environment variables"
+
+Søker opp hva en commando gjør
+man - manual page
+
+man ls 
+eks viser hva ls gjør
+
+Lage ny fil med echo
+echo -n "I do really love" > test.txt
+echo " TTK4147" >> test.txt
+
+Finner størrelsen på en fil
+du -h test.txt
+
+Find out what kind of file it is
+file test.txt
+
+prints the entire file
+cat test.txt
+
+I "Files".
+ctrl + l
+Gjør at man kan endre fil-addressen. 
+eller "Go->Location"
+
+Funker ikke
+//sambaad.stud.ntnu.no/<username>
+Mål: Mounte nettverksdisk til lokal mappe
+
+============================
+Bash-scripting
+
+Lager fil: "script.sh"
+#! /bin/bash
+for i in $(seq 1 10); do
+	echo "Hello world $i"
+done
+
+kjører:
+bash script.sh
+
+Output:
+Hello world 1
+Hello world 2
+Hello world 3
+Hello world 4
+Hello world 5
+Hello world 6
+Hello world 7
+Hello world 8
+Hello world 9
+Hello world 10
+
+Eller gi kjøre-rettigheter først og så kjøre direkte.
+$ chmod +x script.sh
+$ ./script.sh
+
+ouput blir da det samme.
+
+
+=================
+Jobs
+
+sleep 5
+sleeper for 5 sekunder
+
+sleep 5 & 
+sleeper for 5 sekunder men printer også ut arbeidsnr?
+
+For å se kjørende programmer kan bruke "top" "jobs" "ps"
+
+ctrl-c avslutter en oppgave
+ctrl-z midlertidlig stopper en oppgave
+for å starte oppgaven igjen
+fg
+
+===============================
+Editor
+
+finnes mange forskjellige
+gedit test.txt
+åpner filen i gedit. Fungerer helt ok.
+finnes nano, emacs, vim, kate and ed
+
+===============================
+	Programming
+===============================
+===============================
+GCC
+
+Lager fil som heter hello.c og 
+og skriver Hello world program
+
+Kompilerer programmet
+gcc -o hello hello.c 
+Det nye kompilerte programmet får navnet hello
+
+kjører programmet
+./hello
+==============================
+	Makefile
+#include <stdio.h>
+int main(int argc, char *argv[])
+{
+	while(argc--)
+		printf ("%s\n",*argv++);
+	return 0;
+}
+
+argc er antall inputs. argv er inputsene
+denne funksjonen printer altså inn alle inputs separert med mellomrom
+
