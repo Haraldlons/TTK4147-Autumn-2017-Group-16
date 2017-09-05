@@ -4,6 +4,8 @@
 #include <sys/times.h>
 #include "linked_list.h"
 
+// #define N_FLOORS 4
+
 int main(int argc, char **argv)
 {
 	int i;
@@ -14,7 +16,7 @@ int main(int argc, char **argv)
 
 	// append the values 0 to 9 to the list
 	printf("append valued 0 to 9\n");
-	for(i=0; i<10; i++)
+	for(i = 0; i<10; i++)
 	{
 		// Hvorfor ikke peker her?
 		list_append(list, i);

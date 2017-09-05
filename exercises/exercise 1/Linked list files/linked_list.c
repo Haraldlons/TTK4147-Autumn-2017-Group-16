@@ -66,7 +66,7 @@ void list_insert(list_t list, int index, int data)
 			(list->length)++;
 			return;
 		}
-		i = i + 1;
+		i++;
 	}
 }
 

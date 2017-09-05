@@ -1,0 +1,14 @@
+man fork
+	Printer hva fork er
+	fork lager en "child process"
+	
+Switching between to process or two threads
+	Called "context switching"
+
+Create new process in Linux C-program
+	use "fork()" or "vfork()"
+	
+Assignment A:
+	Contains global and local variable
+	Creates another "instance" of itself, using "fork()"
+	

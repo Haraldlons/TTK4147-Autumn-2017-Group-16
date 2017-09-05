@@ -1,6 +1,7 @@
 #ifndef LINKED_LIST_H
 #define LINKED_LIST_H
 
+// Or #pragma once
 /* Internal node type */
 
 struct node { /*Når "node" både er navnet på structen og variablene inni forvirrer det meg*/
