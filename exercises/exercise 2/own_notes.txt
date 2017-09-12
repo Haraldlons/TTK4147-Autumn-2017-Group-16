@@ -12,3 +12,12 @@ Assignment A:
 	Contains global and local variable
 	Creates another "instance" of itself, using "fork()"
 	
+	Why are the results different from fork() and cfork()
+	
+	fork()
+		Gjør en full kopi av parent memory, så den er ganske expensive
+		Har ulik process id (pid)
+		
+		
+	vfork()
+		
