@@ -1,0 +1,42 @@
+Exercise 3 - Own notes
+============================
+
+Butterfl Real-Time Tester(BRTT). 
+BRTT applikasjon som kjører på en AVR butterfly som sjekker responstiden til et sanntidssystem. 
+
+AVR32 UC3 connected to PC and JTAG som beskrevet i "Getting started guide".
+
+Green button AVR Studio to build test application, program the card and run the application.
+
+Program starts -> LED blinking every second. 
+Blue play and pause button, to start debugging.
+	Step through the code one line at the time, add breakpoints.
+
+1.2 Serial Debugging.
+printf() printer gjennom USB-to-serial device. 
+Use "Termite serial console"
+
+Start "Termite program" WHILE AVR32 is running. 
+	Click settings, select last port(maybe COM 3)
+	aud rate of 115200
+	8 data bits
+	1 stop bits
+	none parity and flow control
+	Click "ok" 
+	and then on the button on the top left of the main window to connect. 
+	Should print "tick" every second.
+	If not reconnect usb-cabel.
+	
+	Trick
+		reprogram or restart avr32 while the termite program is "waiting for port".
+		
+	Remember that "printf()" should be avoided in real-time code, as it is slow and unpredictable.
+	
+1.3 Description of the project
+
+2.3 Busy wait
+
+BRTT signaliserer AVR32 ved å sette TEST A pin lav. AVR32 skal så sette så fort som mulig, RESPONSE A pin lav. 
+
+
+
