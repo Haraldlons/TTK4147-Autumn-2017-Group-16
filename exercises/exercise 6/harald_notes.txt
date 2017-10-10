@@ -1,0 +1,2 @@
+Xenomai, task can rund with higher priority than the rest of the Linux system, including Linux itself.
+
