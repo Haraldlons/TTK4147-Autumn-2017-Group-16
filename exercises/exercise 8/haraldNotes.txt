@@ -1,2 +1,10 @@
 Kompilere på host computer og så kjøre på target system er en vanlig måte å utvikle på.
 
+Buildroot, set of scripts and a menu system. Build everything you need for cross-platform development. 
+
+QST:
+	- Creates linux kernel?
+		For target?
+	- 
+
+Toolchain de verktøy som lar deg kompilere koden.
