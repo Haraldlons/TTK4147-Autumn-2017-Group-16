@@ -20,7 +20,7 @@
 
 //Globals:
 struct udp_conn connection;
-pthread_mutex_t udp; //lock on the udp channel for sending: Not really necessary (yet)
+pthread_mutex_t udp; 
 
 //Functions:
 void init(){
@@ -34,8 +34,8 @@ void init(){
 
 void stop(){
 	char send[5];
-	snprintf(send,5,"STOP"); //Hvorfor bruke snprintf?
-	send[4] = '\0'; //Dette er kun ét tegn? (ikke to)
+	snprintf(send,5,"STOP"); 
+	send[4] = '\0'; 
 
 	pthread_mutex_lock(&udp);
 	udp_send(&connection, send, 5);
@@ -47,12 +47,12 @@ float get_output(){
 	char recieved[30];
 	char* value;
 	udp_receive(&connection, recieved, 30);
-	value = strstr(recieved,"GET_ACK:"); //Denne gir alt ETTER 'GET_ACK:'?
+	value = strstr(recieved,"GET_ACK:");
 	if(value){
-		value = value+8; //What is this stuff?
+		value = value+8; 
 		return(atof(value));
 	}
-	printf("Bad things happened!\n"); //Maybe change this line?
+	printf("Bad things happened!\n"); 
 	return 0;
 }
 
@@ -60,7 +60,7 @@ void send_get(){
 	char* send = "GET"; 
 
 	pthread_mutex_lock(&udp);
-	udp_send(&connection,send,4); //Hvorfor må vi noen steder sende '\0' mens andre steder ikke?
+	udp_send(&connection,send,4); 
 	pthread_mutex_unlock(&udp);
 }
 
@@ -83,15 +83,15 @@ void *pid(){
 	struct timespec time_pid;
 	clock_gettime(CLOCK_REALTIME, &time_pid);
 	int i = 0;
-	for(i = 0 ; i < RUNTIME/PERIOD ; i++){ //Kan man ha en while og heller sjekke om en klokke har nådd 0.5 sek?
+	for(i = 0 ; i < RUNTIME/PERIOD ; i++){
 		timespec_add_us(&time_pid, PERIOD);
 		send_get();
 		y = get_output();
 		error = REFERENCE-y;
-		integral = integral + (error*PERIOD/1000000); //Hvorfor dele på 1 000 000?
+		integral = integral + (error*PERIOD/1000000); 
 	    u = KP*error + KI*integral;
 		update_input(u);
-		clock_nanosleep(&time_pid); //sove intill?
+		clock_nanosleep(&time_pid); 
 	}
 }
 
@@ -99,7 +99,7 @@ int main(){
 	init();
 	pthread_t pid_thread;
 	pthread_create(&pid_thread, NULL, pid, NULL);
-	pthread_join(pid_thread, NULL); //Join som venter? 
-	stop(); //Hva er det som hindrer funksjonen til å avslutte? 
+	pthread_join(pid_thread, NULL); 
+	stop(); 
 	return 1;
 }
