@@ -20,26 +20,23 @@
 
 //Globals:
 struct udp_conn connection;
-pthread_mutex_t udp; 
+pthread_mutex_t udp_mutex; //Lock on sending over udp (Not really necessary for part 1)
 
 //Functions:
 void init(){
 	udp_init_client(&connection, PORT, IP);
-	char send[30];
-	sprintf(send,"%s","START");
-	pthread_mutex_lock(&udp);
+	pthread_mutex_init(&udp_mutex, NULL);
+	char* send = "START";
+	pthread_mutex_lock(&udp_mutex);
 	udp_send(&connection,send, strlen(send));
-	pthread_mutex_unlock(&udp);
+	pthread_mutex_unlock(&udp_mutex);
 }
 
 void stop(){
-	char send[5];
-	snprintf(send,5,"STOP"); 
-	send[4] = '\0'; 
-
-	pthread_mutex_lock(&udp);
+	char* send = "STOP"
+	pthread_mutex_lock(&udp_mutex);
 	udp_send(&connection, send, 5);
-	pthread_mutex_unlock(&udp);
+	pthread_mutex_unlock(&udp_mutex);
 	udp_close(&connection);
 }
 
@@ -52,26 +49,27 @@ float get_output(){
 		value = value+8; 
 		return(atof(value));
 	}
-	printf("Bad things happened!\n"); 
+	value = strstr(recieved, "STOP");
+	if(value){
+		printf("Server stopped\n");
+	}
 	return 0;
 }
 
 void send_get(){ 
 	char* send = "GET"; 
-
-	pthread_mutex_lock(&udp);
-	udp_send(&connection,send,4); 
-	pthread_mutex_unlock(&udp);
+	pthread_mutex_lock(&udp_mutex);
+	udp_send(&connection,send,4);
+	pthread_mutex_unlock(&udp_mutex);
 }
 
 void update_input(float value){
 	char send[13];
 	snprintf(send,13,"SET:%f",value);
 	send[12] = '\0'; 
-
-	pthread_mutex_lock(&udp);
+	pthread_mutex_lock(&udp_mutex);
 	udp_send(&connection,send, 13);
-	pthread_mutex_unlock(&udp);
+	pthread_mutex_unlock(&udp_mutex);
 
 }
 
@@ -83,7 +81,7 @@ void *pid(){
 	struct timespec time_pid;
 	clock_gettime(CLOCK_REALTIME, &time_pid);
 	int i = 0;
-	for(i = 0 ; i < RUNTIME/PERIOD ; i++){
+	for(i = 0 ; i < RUNTIME/PERIOD ; i++){ 
 		timespec_add_us(&time_pid, PERIOD);
 		send_get();
 		y = get_output();
@@ -100,6 +98,6 @@ int main(){
 	pthread_t pid_thread;
 	pthread_create(&pid_thread, NULL, pid, NULL);
 	pthread_join(pid_thread, NULL); 
-	stop(); 
+	stop();
 	return 1;
 }
