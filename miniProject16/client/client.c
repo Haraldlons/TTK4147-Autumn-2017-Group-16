@@ -34,7 +34,6 @@ void init(){
 
 void stop(){
 	char* send = "STOP"
-
 	pthread_mutex_lock(&udp_mutex);
 	udp_send(&connection, send, 5);
 	pthread_mutex_unlock(&udp_mutex);
@@ -69,7 +68,6 @@ void update_input(float value){
 	char send[13];
 	snprintf(send,13,"SET:%f",value);
 	send[12] = '\0'; 
-
 	pthread_mutex_lock(&udp_mutex);
 	udp_send(&connection,send, 13);
 	pthread_mutex_unlock(&udp_mutex);
