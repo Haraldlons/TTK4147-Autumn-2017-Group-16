@@ -43,31 +43,26 @@ void stop(){
 	pthread_mutex_unlock(&udp);
 	udp_close(&connection);
 }
-/**
+
 void *reciever(){ //MIGH NOT USE YET :S
 	char recieved[30];
 	char *value;
 	struct timespec time_rec;
-	clock_gettime(CLOCK_REALTIME, &time_rec);
 	while(1){
 		timespec_add_us(&time_rec, PERIOD_RECEIVE);
 		udp_receive(&connection, recieved, 30);
 		value = strstr(recieved,"GET_ACK:");
-
 		if(value)
 		{
 			value = value+8;
-
 			pthread_mutex_lock(&y);
 			y = atof(value);
 			pthread_mutex_unlock(&y);
 
 		}
-		clock_nanosleep(&time_rec);
-
 	}
 }
-**/
+
 float get_output(){
 	char recieved[30];
 	char* value;
@@ -83,7 +78,6 @@ float get_output(){
 
 void send_get(){
 	char* send = "GET";
-
 	pthread_mutex_lock(&udp);
 	udp_send(&connection,send,4);
 	pthread_mutex_unlock(&udp);
@@ -93,16 +87,22 @@ void update_input(float value){
 	char send[13];
 	snprintf(send,13,"SET:%f",value);
 	send[12] = '\0';
-
 	pthread_mutex_lock(&udp);
 	udp_send(&connection,send, 13);
 	pthread_mutex_unlock(&udp);
 
 }
 
+void send_ack(){
+	char* send = "SIGNAL_ACK";
+	pthread_mutex_lock(&udp);
+	udp_send(&connection,send,4);
+	pthread_mutex_unlock(&udp);
+}
+
 void *pid(){
 	float integral = 0;
-	float error ;
+	float error;
 	float u;
 	float y;
 	struct timespec time_pid;
@@ -113,7 +113,7 @@ void *pid(){
 		send_get();
 		y = get_output();
 		error = REFERENCE-y;
-		integral = integral + (error*PERIOD/1000000);
+		integral = integral + (error*PERIOD);
 	    u = KP*error + KI*integral;
 		update_input(u);
 		clock_nanosleep(&time_pid);

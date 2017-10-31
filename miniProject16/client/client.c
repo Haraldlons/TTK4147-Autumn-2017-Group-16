@@ -88,7 +88,7 @@ void *pid(){
 		send_get();
 		y = get_output();
 		error = REFERENCE-y;
-		integral = integral + (error*PERIOD/1000000);
+		integral = integral + (error*PERIOD);
 	    u = KP*error + KI*integral;
 		update_input(u);
 		clock_nanosleep(&time_pid);
