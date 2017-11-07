@@ -1,0 +1,13 @@
+#include <stdlib.h>
+#include <stdio.h>
+
+struct pid_data{
+	pthread_mutex_t pid_mutex;
+	pid_t pid;
+};
+
+int main(int argc, char *argv[]) {
+	int file_desc = shm_open("/sharedpid", O_RDWR, S_IRWXU);
+	void* data = mmap(0, sizeof(struct pid_data), PROT_READ|PROT_WRITE, MAP_SHARED, file_desc, 0);
+	return EXIT_SUCCESS;
+}

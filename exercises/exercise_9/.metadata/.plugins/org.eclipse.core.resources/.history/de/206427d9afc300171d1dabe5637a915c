@@ -1,0 +1,15 @@
+#include <stdlib.h>
+#include <stdio.h>
+
+struct pid_data{
+	pthread_mutex_t pid_mutex;
+	pid_t pid;
+};
+
+int main(int argc, char *argv[]) {
+	struct pid_data p;
+	p.pid = getpid();
+	int file_desc = shm_open("/sharedpid", O_RDWR|O_CREAT, S_IRWXU);
+	ftruncate(file_desc, sizeof(struct pid_data));
+	viod* data = mmap()
+}

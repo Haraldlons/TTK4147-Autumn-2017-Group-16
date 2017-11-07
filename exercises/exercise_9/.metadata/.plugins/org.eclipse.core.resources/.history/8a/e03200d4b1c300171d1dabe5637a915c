@@ -1,0 +1,31 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <unistd.h>
+#include <errno.h>
+#include <string.h>
+#include <fcntl.h>
+#include <sys/dispatch.h>
+#include <sys/mman.h>
+#include <pthread.h>
+
+struct pid_data{
+	pthread_mutex_t pid_mutex;
+	pid_t pid;
+};
+
+int main(int argc, char *argv[]) {
+	struct pid_data* p;
+	&p.pid = getpid();
+	int file_desc = shm_open("/sharedpid", O_RDWR|O_CREAT, S_IRWXU);
+	ftruncate(file_desc, sizeof(struct pid_data));
+	void* data = mmap(0, sizeof(struct pid_data), PROT_READ|PROT_WRITE, MAP_SHARED, file_desc, 0);
+	data = (struct pid_data*)p;
+	//*data = p;
+	pthread_mutexattr_t = attr;
+	pthread_mutexattr_init(&attr);
+	pthread_mutexattr_setpshared(&attr, PTHREAD_PROCESS_SHARED);
+	pthread_mutex_init(data->pid_mutex, &attr);
+	printf("%i \n", data->pid);
+
+	return 0;
+}

@@ -1,0 +1,39 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <unistd.h>
+#include <errno.h>
+#include <string.h>
+#include <fcntl.h>
+#include <sys/dispatch.h>
+#include <sys/mman.h>
+#include <pthread.h>
+
+struct pid_data{
+	pthread_mutex_t pid_mutex;
+	pid_t pid;
+};
+
+int main(int argc, char *argv[]) {
+	int file_desc = shm_open("/sharedpid", O_RDWR, S_IRWXU);
+	struct pid_data* dat = (struct pid_data*) mmap(0, sizeof(struct pid_data), PROT_READ|PROT_WRITE, MAP_SHARED, file_desc, 0);
+
+
+	pthread_mutex_lock(&dat->pid_mutex);
+	pid_t pid= &dat->pid;
+	pthread_mutex_unlock(&dat->pid_mutex);
+
+	//printf("%i \n", pid);
+	printf("hello\n");
+	int channelId = ConnectAttach(0, pid, 1, 0 ,0);
+	printf("attatched");
+	int* send;
+	*send = 3;
+	int* buff;
+	int status = MsgSend(channelId, send, sizeof(int), buff, sizeof(int));
+	printf("status: %i -- Received: %i", status, *buff);
+	ConnectDetach(channelId);
+	printf("finished");
+
+
+	return EXIT_SUCCESS;
+}
