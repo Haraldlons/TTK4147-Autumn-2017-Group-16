@@ -8,10 +8,51 @@
 #include <sys/mman.h>
 #include <pthread.h>
 
+int set_priority(int priority) {
+	int policy;
+	struct sched_param param;
+	// check priority in range
+	if (priority < 1 || priority > 63) return -1;
+	// set priority
+	pthread_getschedparam(pthread_self(), &policy, &param);
+	param.sched_priority = priority;
+	return pthread_setschedparam(pthread_self(), policy, &param);
+}
+
+int get_priority(){
+	int policy;
+	struct sched_param param;
+	// get priority
+	pthread_getschedparam(pthread_self(), &policy, &param);
+	return param.sched_curpriority;
+}
+
 struct pid_data{
 	pthread_mutex_t pid_mutex;
 	pid_t pid;
 };
+
+void sendMsgH(pid_t* pid){
+	set_priority(12);
+	int channelId = ConnectAttach(0, *pid, 1, 0 ,0);
+	int* send = malloc(sizeof(int));
+	*send = 10;
+	int* buff = malloc(sizeof(int));
+	int status = MsgSend(channelId, send, sizeof(int), buff, sizeof(int));
+	printf("status: %i -- Sent: %i -- Received: %i \n", status, 10, *buff);
+	ConnectDetach(channelId);
+}
+void sendMsgL(pid_t* pid){
+	set_priority(8);
+	int channelId = ConnectAttach(0, *pid, 1, 0 ,0);
+	int* send = malloc(sizeof(int));
+	*send = 10;
+	int* buff = malloc(sizeof(int));
+	int status = MsgSend(channelId, send, sizeof(int), buff, sizeof(int));
+	printf("status: %i -- Sent: %i -- Received: %i \n", status, 10, *buff);
+	ConnectDetach(channelId);
+}
+
 
 int main(int argc, char *argv[]) {
 	int file_desc = shm_open("/sharedpid", O_RDWR, S_IRWXU);
@@ -22,18 +63,16 @@ int main(int argc, char *argv[]) {
 	pid_t pid= dat->pid;
 	pthread_mutex_unlock(&(dat->pid_mutex));
 
-	printf("%i \n", pid);
+	set_priority(30);
 
-	int channelId = ConnectAttach(0, pid, 1, 0 ,0);
-	printf("attached \n");
-	int* send;
-	*send = 3;
-	int* buff;
-	int status = MsgSend(channelId, send, sizeof(int), buff, sizeof(int));
-	printf("status: %i -- Received: %i \n", status, *buff);
-	ConnectDetach(channelId);
-	printf("finished \n");
-
-
+	pthread_t send1, send2, send3, send4;
+	pthread_create(&send1, NULL, &sendMsgH, &pid);
+	pthread_create(&send2, NULL, &sendMsgH, &pid);
+	pthread_create(&send3, NULL, &sendMsgL, &pid);
+	pthread_create(&send4, NULL, &sendMsgL, &pid);
+	set_priority(1);
+	while(1){
+		continue;
+	}
 	return EXIT_SUCCESS;
 }

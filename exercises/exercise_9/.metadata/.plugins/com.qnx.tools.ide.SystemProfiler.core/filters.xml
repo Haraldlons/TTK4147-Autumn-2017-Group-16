@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<filterSettings>
+<filter name="192.168.56.101-trace-171114-113127.kev">
+<filterData type="Elements">
+<filteredElement id="1" name="Thread 1" parentId="4102" parentName="io-hid"/>
+<filteredElement id="1" name="Thread 1" parentId="372770" parentName="wmswitch"/>
+<filteredElement id="3" name="Thread 3" parentId="90126" parentName="io-audio"/>
+<filteredElement id="5" name="Thread 5" parentId="417821" parentName="qconn"/>
+<filteredElement id="0" name="procnto-smp-instr" parentId="0" parentName="Interrupt 0x0"/>
+<filteredElement id="3" name="Thread 3" parentId="229404" parentName="io-graphics"/>
+<filteredElement id="2" name="Thread 2" parentId="4103" parentName="devc-con-hid"/>
+<filteredElement id="2" name="Thread 2" parentId="90126" parentName="io-audio"/>
+<filteredElement id="6" name="Thread 6" parentId="4102" parentName="io-hid"/>
+<filteredElement id="6" name="Thread 6" parentId="90126" parentName="io-audio"/>
+<filteredElement id="1" name="Thread 1" parentId="2" parentName="tinit"/>
+<filteredElement id="1" name="Thread 1" parentId="4103" parentName="devc-con-hid"/>
+<filteredElement id="1" name="Thread 1" parentId="20489" parentName="pipe"/>
+<filteredElement id="2" name="io-pkt#0x00" parentId="126994" parentName="io-pkt-v4-hc"/>
+<filteredElement id="4" name="Thread 4" parentId="1" parentName="procnto-smp-instr"/>
+<filteredElement id="5" name="iod-message-handler" parentId="110609" parentName="io-display"/>
+<filteredElement id="5" name="Thread 5" parentId="1" parentName="procnto-smp-instr"/>
+<filteredElement id="1" name="Thread 1" parentId="208923" parentName="Photon"/>
+<filteredElement id="1" name="Thread 1" parentId="53259" parentName="mcd"/>
+<filteredElement id="5" name="Thread 5" parentId="245791" parentName="devi-hid"/>
+<filteredElement id="3" name="Thread 3" parentId="20489" parentName="pipe"/>
+<filteredElement id="1" name="Thread 1" parentId="155668" parentName="dhcp.client"/>
+<filteredElement id="1" name="Thread 1" parentId="151567" parentName="devc-pty"/>
+<filteredElement id="1" name="Thread 1" parentId="163861" parentName="dumper"/>
+<filteredElement id="1" name="Thread 1" parentId="372769" parentName="bkgdmgr"/>
+<filteredElement id="5" name="Thread 5" parentId="90126" parentName="io-audio"/>
+<filteredElement id="7" name="Thread 7" parentId="4102" parentName="io-hid"/>
+<filteredElement id="3" name="async_io" parentId="8200" parentName="devb-eide"/>
+<filteredElement id="1" name="signal_handler" parentId="4101" parentName="io-usb"/>
+<filteredElement id="3" name="Thread 3" parentId="53259" parentName="mcd"/>
+<filteredElement id="8" name="fsys_resmgr" parentId="8200" parentName="devb-eide"/>
+<filteredElement id="1" name="Thread 1" parentId="323614" parentName="pwm"/>
+<filteredElement id="14" name="Thread 14" parentId="1" parentName="procnto-smp-instr"/>
+<filteredElement id="4" name="Thread 4" parentId="417821" parentName="qconn"/>
+<filteredElement id="5" name="usb_resmgr" parentId="4101" parentName="io-usb"/>
+<filteredElement id="8" name="Thread 8" parentId="1" parentName="procnto-smp-instr"/>
+<filteredElement id="2" name="usbdi_event_handler" parentId="77840" parentName="enum-usb"/>
+<filteredElement id="3" name="Thread 3" parentId="245791" parentName="devi-hid"/>
+<filteredElement id="6" name="fsys_resmgr" parentId="8200" parentName="devb-eide"/>
+<filteredElement id="1" name="Thread 1" parentId="352288" parentName="shelf"/>
+<filteredElement id="4" name="Thread 4" parentId="4102" parentName="io-hid"/>
+<filteredElement id="0" name="io-pkt-v4-hc" parentId="0" parentName="Interrupt 0x0"/>
+<filteredElement id="1" name="xpt_signal_handler" parentId="8200" parentName="devb-eide"/>
+<filteredElement id="1" name="Thread 1" parentId="4099" parentName="pci-bios"/>
+<filteredElement id="6" name="Thread 6" parentId="417821" parentName="qconn"/>
+<filteredElement id="1" name="Thread 1" parentId="180246" parentName="login"/>
+<filteredElement id="10" name="Thread 10" parentId="1" parentName="procnto-smp-instr"/>
+<filteredElement id="2" name="Thread 2" parentId="417821" parentName="qconn"/>
+<filteredElement id="10" name="io-pkt-v4-hc" parentId="10" parentName="Interrupt 0xA"/>
+<filteredElement id="12" name="Thread 12" parentId="1" parentName="procnto-smp-instr"/>
+<filteredElement id="7" name="fsys_resmgr" parentId="8200" parentName="devb-eide"/>
+<filteredElement id="1" name="Thread 1" parentId="417818" parentName="sh"/>
+<filteredElement id="1" name="Thread 1" parentId="417821" parentName="qconn"/>
+<filteredElement id="7" name="Thread 7" parentId="53259" parentName="mcd"/>
+<filteredElement id="1" name="iod-monitor" parentId="110609" parentName="io-display"/>
+<filteredElement id="4" name="Thread 4" parentId="20489" parentName="pipe"/>
+<filteredElement id="1" name="Thread 1" parentId="57356" parentName="random"/>
+<filteredElement id="1" name="Thread 1" parentId="245791" parentName="devi-hid"/>
+<filteredElement id="3" name="Thread 3" parentId="126994" parentName="io-pkt-v4-hc"/>
+<filteredElement id="2" name="event_handler" parentId="4101" parentName="io-usb"/>
+<filteredElement id="4" name="Thread 4" parentId="53259" parentName="mcd"/>
+<filteredElement id="3" name="iod-message-handler" parentId="110609" parentName="io-display"/>
+<filteredElement id="2" name="Thread 2" parentId="4102" parentName="io-hid"/>
+<filteredElement id="2" name="Thread 2" parentId="229404" parentName="io-graphics"/>
+<filteredElement id="3" name="Thread 3" parentId="1" parentName="procnto-smp-instr"/>
+<filteredElement id="5" name="usbdi_event_handler" parentId="4102" parentName="io-hid"/>
+<filteredElement id="3" name="Thread 3" parentId="4102" parentName="io-hid"/>
+<filteredElement id="5" name="Thread 5" parentId="53259" parentName="mcd"/>
+<filteredElement id="4" name="port_change_enum_hdl" parentId="4101" parentName="io-usb"/>
+<filteredElement id="3" name="usb_resmgr" parentId="4101" parentName="io-usb"/>
+<filteredElement id="3" name="Thread 3" parentId="417821" parentName="qconn"/>
+<filteredElement id="2" name="Thread 2" parentId="1" parentName="procnto-smp-instr"/>
+<filteredElement id="2" name="Thread 2" parentId="20489" parentName="pipe"/>
+<filteredElement id="13" name="Thread 13" parentId="1" parentName="procnto-smp-instr"/>
+<filteredElement id="1" name="Thread 1" parentId="24586" parentName="mqueue"/>
+<filteredElement id="5" name="fsys_resmgr" parentId="8200" parentName="devb-eide"/>
+<filteredElement id="1" name="Thread 1" parentId="77840" parentName="enum-usb"/>
+<filteredElement id="2" name="Thread 2" parentId="352288" parentName="shelf"/>
+<filteredElement id="4" name="Thread 4" parentId="90126" parentName="io-audio"/>
+<filteredElement id="1" name="Thread 1" parentId="180248" parentName="login"/>
+<filteredElement id="2" name="Thread 2" parentId="57356" parentName="random"/>
+<filteredElement id="1" name="Thread 1" parentId="229404" parentName="io-graphics"/>
+<filteredElement id="1" name="Thread 1" parentId="372771" parentName="saver"/>
+<filteredElement id="2" name="Thread 2" parentId="53259" parentName="mcd"/>
+<filteredElement id="14" name="devb-eide" parentId="14" parentName="Interrupt 0xE"/>
+<filteredElement id="11" name="Thread 11" parentId="1" parentName="procnto-smp-instr"/>
+<filteredElement id="6" name="Thread 6" parentId="1" parentName="procnto-smp-instr"/>
+<filteredElement id="3" name="Thread 3" parentId="57356" parentName="random"/>
+<filteredElement id="2" name="iod-message-handler" parentId="110609" parentName="io-display"/>
+<filteredElement id="1" name="Thread 1" parentId="258073" parentName="login"/>
+<filteredElement id="2" name="eide_driver_thread" parentId="8200" parentName="devb-eide"/>
+<filteredElement id="2" name="Thread 2" parentId="245791" parentName="devi-hid"/>
+<filteredElement id="1" name="io-pkt main" parentId="126994" parentName="io-pkt-v4-hc"/>
+<filteredElement id="1" name="CPU 1 idle" parentId="1" parentName="procnto-smp-instr"/>
+<filteredElement id="1" name="Thread 1" parentId="61453" parentName="enum-devices"/>
+<filteredElement id="1" name="Thread 1" parentId="90126" parentName="io-audio"/>
+<filteredElement id="1" name="Thread 1" parentId="180247" parentName="login"/>
+<filteredElement id="6" name="Thread 6" parentId="53259" parentName="mcd"/>
+<filteredElement id="4" name="iod-hw-mutex-monitor" parentId="110609" parentName="io-display"/>
+<filteredElement id="1" name="Thread 1" parentId="417811" parentName="pterm"/>
+<filteredElement id="1" name="Thread 1" parentId="4100" parentName="slogger"/>
+<filteredElement id="4" name="fsys_resmgr" parentId="8200" parentName="devb-eide"/>
+</filterData>
+<filterData type="Events"/>
+<filterData type="Partitions"/>
+</filter>
+<filter name="Default Filter">
+<filterData type="Elements"/>
+<filterData type="Events"/>
+<filterData type="Partitions"/>
+</filter>
+</filterSettings>

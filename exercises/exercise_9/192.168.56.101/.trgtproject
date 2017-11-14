@@ -4,6 +4,11 @@
 <item id="com.qnx.tools.ide.target">
 <qconnport value="8000"/>
 <qconnhostname value="192.168.56.101"/>
+<qconn>
+<core>
+<show_warning value="true"/>
+</core>
+</qconn>
 <project>
 <name value="192.168.56.101"/>
 </project>

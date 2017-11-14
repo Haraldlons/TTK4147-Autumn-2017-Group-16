@@ -6,7 +6,28 @@
 #include <fcntl.h>
 #include <sys/dispatch.h>
 #include <sys/mman.h>
+#include <sys/neutrino.h>
 #include <pthread.h>
+
+int set_priority(int priority) {
+	int policy;
+	struct sched_param param;
+	// check priority in range
+	if (priority < 1 || priority > 63) return -1;
+	// set priority
+	pthread_getschedparam(pthread_self(), &policy, &param);
+	param.sched_priority = priority;
+	return pthread_setschedparam(pthread_self(), policy, &param);
+}
+
+int get_priority(){
+	int policy;
+	struct sched_param param;
+	// get priority
+	pthread_getschedparam(pthread_self(), &policy, &param);
+	return param.sched_curpriority;
+}
+
 
 struct pid_data{
 	pthread_mutex_t pid_mutex;
@@ -28,16 +49,21 @@ int main(int argc, char *argv[]) {
 	printf("%i \n", dat->pid);
 	printf("%i \n", p.pid);
 
-	int* buff;
-	int* send;
+	int* buff = malloc(sizeof(int));
+	int* send = malloc(sizeof(int));
 
+	set_priority(10);
 	int channelId = ChannelCreate(0);
-	int recMsgId = MsgReceive(channelId, buff, sizeof(int), NULL);
-	printf("%i \n", *buff);
-	*send = *buff + 2;
-	MsgReply(recMsgId, 0, send, sizeof(int));
-
-	printf("hello");
-
+	int recMsgId = 0;
+	struct _msg_info* msgInfo = malloc(sizeof(struct _msg_info));
+	while(1){
+		printf("Before rec priority is: %i\n", get_priority());
+		recMsgId = MsgReceive(channelId, buff, sizeof(int), msgInfo);
+		printf("After rec priority is: %i\n", get_priority());
+		printf("pid:%i -- tid:%i\n", msgInfo->pid, msgInfo->tid);
+		*send = *buff + 2;
+		MsgReply(recMsgId, 0, send, sizeof(int));
+		//printf("After reply priority is: %i\n", get_priority());
+	}
 	return 0;
 }
