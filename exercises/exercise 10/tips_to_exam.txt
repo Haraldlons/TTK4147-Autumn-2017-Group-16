@@ -1,0 +1,14 @@
+time robin, first in first out, tegne grafer. scheduling bevis, response time analysis, generelt fkta . generell kunnskap om ulike OS. Case med robot, hvilket OS. Drøfte ulike OS
+
+Drøft forskjell mellom OS.
+
+Øvinger ikke relevant. 
+Kunne schedulinger grafer.
+
+Teori-øvingen. 
+
+Response time analyzis. 
+
+Pugge fag.
+
+ 
